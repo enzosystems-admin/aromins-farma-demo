@@ -1,6 +1,6 @@
-# Aromins Farma S.R.L. — proiect școlar Dumitru Andreea Teodora
+# Aromina Farma S.R.L. — proiect școlar Dumitru Andreea Teodora
 
-**Realizat de:** Dumitru Andreea Teodora  
+**Operator IT:** Dumitru Andreea Teodora  
 **Website public:** https://enzosystems-admin.github.io/aromins-farma-demo/  
 **Temă:** concept de magazin online cu produse pentru bebeluși și părinți.
 
