@@ -339,7 +339,8 @@ const products = [
     "bg": "#f5f8f5",
     "image": "assets/product-23.jpg",
     "source": "https://comenzi.farmaciatei.ro/medicamente-otc/sistemul-respirator/ameliorare-simptome-raceala-si-gripa/paracetamol-500-mg-20-comprimate-zentiva-p300342",
-    "description": "Paracetamol Zentiva 500 mg, 20 comprimate. Produs real prezentat în catalogul educațional Aromina Farma. Preț demonstrativ pentru proiectul școlar."
+    "description": "Paracetamol Zentiva 500 mg, 20 comprimate. Produs real prezentat în catalogul educațional Aromina Farma. Preț demonstrativ pentru proiectul școlar.",
+    "subcategory": "comprimate"
   },
   {
     "id": 24,
@@ -352,7 +353,8 @@ const products = [
     "bg": "#f5f8f5",
     "image": "assets/product-24.jpg",
     "source": "https://comenzi.farmaciatei.ro/medicamente-otc/sistemul-respirator/analgezice/nurofen-200-mg-24-drajeuri-reckitt-benkiser-p336557",
-    "description": "Nurofen 200 mg, 24 drajeuri. Produs real prezentat în catalogul educațional Aromina Farma. Preț demonstrativ pentru proiectul școlar."
+    "description": "Nurofen 200 mg, 24 drajeuri. Produs real prezentat în catalogul educațional Aromina Farma. Preț demonstrativ pentru proiectul școlar.",
+    "subcategory": "drajeuri"
   },
   {
     "id": 25,
@@ -365,7 +367,8 @@ const products = [
     "bg": "#f5f8f5",
     "image": "assets/product-25.jpg",
     "source": "https://comenzi.farmaciatei.ro/medicamente-otc/sistemul-respirator/ameliorare-simptome-raceala-si-gripa/aspirin-plus-c-400-mg240-mg-20-comprimate-efervescente-bayer-p300324",
-    "description": "Aspirin Plus C 400 mg/240 mg, 20 comprimate. Produs real prezentat în catalogul educațional Aromina Farma. Preț demonstrativ pentru proiectul școlar."
+    "description": "Aspirin Plus C 400 mg/240 mg, 20 comprimate. Produs real prezentat în catalogul educațional Aromina Farma. Preț demonstrativ pentru proiectul școlar.",
+    "subcategory": "comprimate"
   },
   {
     "id": 26,
@@ -378,7 +381,76 @@ const products = [
     "bg": "#f5f8f5",
     "image": "assets/product-26.png",
     "source": "https://comenzi.farmaciatei.ro/medicamente-otc/sistemul-respirator/dureri-de-gat/strepsils-miere-si-lamaie-36-pastile-reckitt-benckiser-healthcare-p324657",
-    "description": "Strepsils miere și lămâie, 36 pastile. Produs real prezentat în catalogul educațional Aromina Farma. Preț demonstrativ pentru proiectul școlar."
+    "description": "Strepsils miere și lămâie, 36 pastile. Produs real prezentat în catalogul educațional Aromina Farma. Preț demonstrativ pentru proiectul școlar.",
+    "subcategory": "gat"
+  }
+];
+const catalogGroups = [
+  {
+    "id": "bebe",
+    "label": "Bebe și mamă",
+    "children": [
+      {
+        "id": "lapte",
+        "label": "Lapte praf și hrană"
+      },
+      {
+        "id": "scutece",
+        "label": "Scutece și șervețele"
+      },
+      {
+        "id": "ingrijire",
+        "label": "Igienă pentru bebe"
+      },
+      {
+        "id": "alimentatie",
+        "label": "Diversificare și masă"
+      },
+      {
+        "id": "accesorii",
+        "label": "Accesorii pentru bebe"
+      },
+      {
+        "id": "mamici",
+        "label": "Pentru mămici"
+      }
+    ]
+  },
+  {
+    "id": "frumusete",
+    "label": "Îngrijire și frumusețe",
+    "children": [
+      {
+        "id": "personala",
+        "label": "Îngrijire personală"
+      },
+      {
+        "id": "machiaj",
+        "label": "Machiaj"
+      },
+      {
+        "id": "par",
+        "label": "Îngrijirea părului"
+      }
+    ]
+  },
+  {
+    "id": "medicamente",
+    "label": "Medicamente",
+    "children": [
+      {
+        "id": "comprimate",
+        "label": "Comprimate"
+      },
+      {
+        "id": "drajeuri",
+        "label": "Drajeuri"
+      },
+      {
+        "id": "gat",
+        "label": "Pastile pentru gât"
+      }
+    ]
   }
 ];
 const currency = value => new Intl.NumberFormat('ro-RO',{minimumFractionDigits:2,maximumFractionDigits:2}).format(value) + ' lei';
@@ -390,7 +462,15 @@ const grid=$('#productGrid'),overlay=$('#overlay'),drawer=$('#cartDrawer'),modal
 
 function packageHTML(p) { return `<img class="product-photo" src="${p.image}" alt="${p.name}" width="400" height="400" loading="lazy">`; }
 function visualHTML(p,interactive=false){return `<div class="product-visual" style="--product-bg:${p.bg}" ${interactive?`data-detail="${p.id}" role="button" tabindex="0" aria-label="Vezi ${p.name}"`:''}><span class="product-tag">${p.tag}</span>${packageHTML(p)}${interactive?`<button class="favorite-toggle ${favorites.has(p.id)?'is-favorite':''}" data-favorite="${p.id}" aria-label="${favorites.has(p.id)?'Elimină de la favorite':'Adaugă la favorite'}" aria-pressed="${favorites.has(p.id)}">${favorites.has(p.id)?'♥':'♡'}</button>`:''}</div>`}
-function renderProducts(){if (!grid) return; let results=products.filter(p=>(filter==='all'||p.category===filter)&&(!showFavorites||favorites.has(p.id))&&`${p.name} ${p.categoryLabel} ${p.size}`.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes(search.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')));
+function renderProducts(){if (!grid) return;
+ const group = catalogGroups.find(group => group.id === filter);
+ const parent = group || catalogGroups.find(group => group.children.some(child => child.id === filter));
+ const child = parent?.children.find(child => child.id === filter);
+ const allowed = group ? group.children.map(child => child.id) : [filter];
+ const categoryPath = parent ? parent.label + (child ? " / " + child.label : "") : "Toate produsele";
+ document.getElementById("categoryPath").textContent = categoryPath;
+ if (parent) document.querySelector("[data-group="+parent.id+"]").open = true;
+ let results=products.filter(p=>(filter==='all'||allowed.includes(p.subcategory || p.category))&&(!showFavorites||favorites.has(p.id))&&`${p.name} ${p.categoryLabel} ${p.size}`.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes(search.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')));
  if(sort==='asc')results.sort((a,b)=>a.price-b.price);else if(sort==='desc')results.sort((a,b)=>b.price-a.price);else if(sort==='alpha')results.sort((a,b)=>a.name.localeCompare(b.name,'ro'));
  grid.innerHTML=results.length?results.map(p=>`<article class="product-card">${visualHTML(p,true)}<div class="product-info"><span class="product-category">${p.categoryLabel}</span><button class="product-name" data-detail="${p.id}">${p.name}</button><div class="product-price-row"><div class="price-stack">${p.oldPrice ? `<del>${currency(p.oldPrice)}</del>` : ''}<strong class="product-price">${currency(p.price)}</strong></div><button class="add-cart" data-add="${p.id}" aria-label="Adaugă în coș: ${p.name}" title="Adaugă în coș"><svg viewBox="0 0 24 24"><path d="M3 4h2.5l2 11h11.4L21 8H6.3"/><path d="M10 5v6m-3-3h6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></button></div></div></article>`).join(''):`<div class="empty-results"><div>⌕</div><h3>Niciun produs găsit</h3><p>Încearcă alt termen sau revino la toate produsele.</p><button class="btn btn-primary" id="resetProducts">Afișează toate produsele</button></div>`;
  $('#resultCount').textContent=`${results.length} ${results.length===1?'produs':'produse'} ${showFavorites?'favorite':''}`;$('#clearFilters').hidden=filter==='all'&&!search&&!showFavorites;document.querySelectorAll('[data-filter]').forEach(b=>{const active=b.dataset.filter===filter;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});updateCounters();}
