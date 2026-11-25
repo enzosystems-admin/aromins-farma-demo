@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Aromina Farma S.R.L. — concept de magazin online pentru bebeluși, proiect școlar realizat de Dumitru Andreea Teodora." />
+  <meta name="author" content="Dumitru Andreea Teodora" />
+  <meta name="theme-color" content="#194b43" />
+  <title>Despre noi — Aromina Farma</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="demo-strip"><span>PROIECT ȘCOLAR · DUMITRU ANDREEA TEODORA</span><span class="strip-mid">Catalog educațional · Prețuri și reduceri demonstrative</span><span>AROMINA FARMA S.R.L.</span></div>
+  <header class="site-header">
+    <div class="header-primary container">
+      <a class="brand" href="index.html" aria-label="Aromina Farma - prima pagină">
+        <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+        <span class="brand-stack"><strong>aromina<span>.</span></strong><small>FARMA <em>•</em> BABY CARE</small></span>
+      </a>
+      <div class="header-search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.2"/><path d="m16 16 4.5 4.5"/></svg>
+        <input id="searchInput" type="search" placeholder="Caută produse pentru cei mici..." aria-label="Caută produse" autocomplete="off" />
+        <kbd>⌕</kbd>
+      </div>
+      <div class="header-actions">
+        <button class="icon-button mobile-search-button" id="mobileSearchButton" aria-label="Deschide căutarea"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.2"/><path d="m16 16 4.5 4.5"/></svg></button>
+        <button class="icon-button favorites-button" id="favoritesButton" aria-label="Afișează produsele favorite" title="Favorite"><svg viewBox="0 0 24 24"><path d="M20.8 8.1c0 4.8-8.8 10.5-8.8 10.5S3.2 12.9 3.2 8.1a4.6 4.6 0 0 1 8.8-1.6 4.6 4.6 0 0 1 8.8 1.6Z"/></svg><span class="counter favorite-counter" id="favoriteCount" hidden>0</span></button>
+        <button class="cart-button" id="cartButton" aria-label="Deschide coșul"><svg viewBox="0 0 24 24"><path d="M3 4h2.3l2.2 11.5h11.9l2-8.5H6"/><circle cx="9.2" cy="20" r="1.15"/><circle cx="18.2" cy="20" r="1.15"/></svg><span>Coșul meu</span><span class="counter" id="cartCount">0</span></button>
+      </div>
+    </div>
+    <nav class="header-nav" aria-label="Navigare principală"><div class="container nav-links">
+      <a class="nav-home" href="index.html" >Acasă</a>
+      <a href="index.html#oferte-craciun">Oferte de Crăciun</a><a href="index.html#produse">Produse</a><a class="nav-about" href="despre-noi.html" aria-current="page">Despre noi</a>
+    </div></nav>
+  </header>
+  <div class="shop-layout container"><aside class="category-sidebar" aria-label="Meniul categoriilor"><h2>Categorii</h2><nav aria-label="Categorii de produse">
+<button data-filter="all" aria-pressed="true">Toate produsele</button>
+<button data-filter="lapte" aria-pressed="false">Lapte praf & hrană</button>
+<button data-filter="scutece" aria-pressed="false">Scutece & șervețele</button>
+<button data-filter="ingrijire" aria-pressed="false">Îngrijire & igienă</button>
+<button data-filter="alimentatie" aria-pressed="false">Diversificare & masă</button>
+<button data-filter="accesorii" aria-pressed="false">Accesorii bebeluși</button>
+<button data-filter="mamici" aria-pressed="false">Pentru mămici</button>
+</nav><a class="sidebar-christmas" href="index.html#oferte-craciun">✦ Oferte de Crăciun</a><a class="sidebar-about" href="despre-noi.html">Despre noi</a></aside><main class="shop-main about-page">
+<section class="about-intro"><span class="section-kicker">DESPRE AROMINA FARMA</span><h1>Grijă pentru cei mici.<br><em>Atenție pentru fiecare familie.</em></h1><p>Aromina Farma S.R.L. este conceptul unui magazin dedicat bebelușilor și părinților, construit în jurul lucrurilor de care o familie are nevoie zi de zi.</p></section>
+<div class="about-columns"><section><h2>Ce găsești la noi</h2><p>Catalogul reunește lapte praf, scutece, șervețele, produse de îngrijire, biberoane, suzete și accesorii pentru diversificare. Meniul din stânga te ajută să ajungi direct la categoria dorită.</p><p>Fiecare articol are o fotografie a produsului real, denumirea și detaliile de prezentare. Poți căuta produse, sorta lista după preț și salva favorite.</p><a class="btn btn-primary" href="index.html#produse">Explorează catalogul</a></section>
+<section class="about-author"><span class="section-kicker">PROIECT ȘCOLAR</span><h2>Un proiect realizat cu grijă</h2><p>Website realizat de <strong>Dumitru Andreea Teodora</strong>, în cadrul pregătirii pentru specializarea <strong>Operator IT</strong>.</p><p>Proiectul prezintă organizarea unui magazin online, navigarea între pagini și gestionarea unui coș de cumpărături.</p></section></div>
+<section class="about-details"><h2>Cum funcționează demonstrația</h2><p>Produsele și fotografiile sunt reale, iar prețurile și ofertele de Crăciun sunt exemple fictive folosite în proiect. Adăugarea în coș și favoritele funcționează în browser.</p><p>Acesta este un proiect educațional. Comenzile și plățile sunt simulate.</p><h2>Fotografiile din catalog</h2><p>Fotografiile produselor provin din paginile de prezentare Bebe Tei. Mărcile aparțin titularilor lor. În fereastra cu detaliile fiecărui produs găsești legătura către sursa fotografiei.</p></section>
+</main></div>
+  <footer class="footer" id="contact"><div class="container footer-main"><div class="footer-about"><a class="brand brand-footer" href="index.html"><span class="brand-mark"><span></span><span></span><span></span><span></span></span><span class="brand-stack"><strong>aromina<span>.</span></strong><small>FARMA <em>•</em> BABY CARE</small></span></a><p>Un mic univers al grijii pentru bebeluși și părinți. Website demonstrativ realizat pentru un proiect școlar.</p></div><div class="footer-column"><strong>Descoperă</strong><a href="index.html#categorii">Categorii</a><a href="index.html#produse">Produse</a><a href="despre-noi.html">Despre noi</a></div><div class="footer-column"><strong>Informații</strong><a href="index.html#intrebari">Întrebări frecvente</a><a href="#contact">Contact</a><span>Fără comenzi reale</span></div><div class="footer-demo"><span class="demo-icon">✳</span><strong>Proiect educațional</strong><p>Concept și funcționalități prezentate exclusiv în scop didactic. Nu reprezintă o farmacie autorizată și nu oferă consiliere medicală.</p></div></div><div class="container footer-bottom"><span>© <span id="year">2026</span> Aromina Farma S.R.L. — concept demonstrativ</span><span>Operator IT <strong>Dumitru Andreea Teodora</strong></span></div></footer>
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Coșul demonstrativ" aria-hidden="true" tabindex="-1"><div class="drawer-header"><div><span class="section-kicker">AROMINA FARMA</span><h3>Coșul meu <span id="drawerCount">(0)</span></h3></div><button class="close-button" id="closeCart" aria-label="Închide coșul">×</button></div><div class="cart-items" id="cartItems"></div><div class="drawer-footer" id="cartFooter"><div class="cart-total"><span>Total demonstrativ</span><strong id="cartTotal">0,00 lei</strong></div><p>Acest coș nu permite efectuarea unei comenzi reale.</p><button class="btn btn-primary checkout-btn" id="checkoutButton">Finalizează (demo) <span>→</span></button></div></aside>
+  <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalName" aria-hidden="true" tabindex="-1"><button class="modal-close close-button" id="closeModal" aria-label="Închide detaliile">×</button><div id="modalContents"></div></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
